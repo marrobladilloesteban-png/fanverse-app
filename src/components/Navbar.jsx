@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/logo.png";
+import { useAuth } from "../auth/AuthProvider";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const { user, logout } = useAuth(); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,6 +17,7 @@ const Navbar = () => {
       setSearch("");
       setMenuOpen(false);
     }
+    
   };
 
   const navLinks = [
@@ -31,7 +34,6 @@ const Navbar = () => {
         {/* LOGO */}
         <div className="flex items-center gap-2">
           <img src={logo} alt="Logo" className="w-30 h-20 rounded-lg" />
-          <span className="font-bold text-lg text-gray-700"></span>
         </div>
 
         {/* LINKS DESKTOP */}
@@ -52,6 +54,8 @@ const Navbar = () => {
               {link.label}
             </NavLink>
           ))}
+
+          {/* FORMULARIO DE BÚSQUEDA */}
           <form onSubmit={handleSubmit} className="flex">
             <input
               value={search}
@@ -61,11 +65,41 @@ const Navbar = () => {
             />
             <button
               type="submit"
-              className="px-3 py-1.5 bg-purple-600 text-white rounded-r-md"
+              className="px-3 py-1.5 bg-purple-500 text-white rounded-r-md"
             >
               Buscar
             </button>
           </form>
+
+          {/* 🔹 BLOQUE DE AUTENTICACIÓN */}
+          <div className="flex items-center gap-3 ml-3">
+            {user ? (
+              <>
+                <span className="text-sm text-gray-600">
+                  Hola, {user.displayName || user.email}
+                </span>
+                <Link
+                  to="/dashboard"
+                  className="px-3 py-1.5 rounded bg-purple-500 text-white text-sm"
+                >
+                  Dashboard
+                </Link>
+                <button
+                  onClick={logout}
+                  className="px-3 py-1.5 rounded border text-sm"
+                >
+                  Salir
+                </button>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className="px-3 py-1.5 rounded bg-purple-500 text-white text-sm"
+              >
+                Iniciar sesión
+              </Link>
+            )}
+          </div>
         </nav>
 
         {/* BOTÓN MENÚ MÓVIL */}
@@ -96,7 +130,7 @@ const Navbar = () => {
                   className={({ isActive }) =>
                     `w-full px-3 py-2 rounded-md ${
                       isActive
-                        ? "bg-blue-600 text-white"
+                        ? "bg-purple-500 text-white"
                         : "text-gray-700 hover:bg-blue-100"
                     }`
                   }
@@ -105,6 +139,7 @@ const Navbar = () => {
                   {link.label}
                 </NavLink>
               ))}
+
               <form onSubmit={handleSubmit} className="w-full mt-2 flex">
                 <input
                   value={search}
@@ -114,11 +149,46 @@ const Navbar = () => {
                 />
                 <button
                   type="submit"
-                  className="px-3 py-2 bg-blue-600 text-white rounded-r-md"
+                  className="px-3 py-2 bg-purple-500 text-white rounded-r-md"
                 >
                   Buscar
                 </button>
               </form>
+
+              {/* 🔹 BLOQUE DE AUTENTICACIÓN también en móvil */}
+              <div className="w-full mt-3">
+                {user ? (
+                  <>
+                    <p className="text-gray-700 mb-2">
+                      Hola, {user.displayName || user.email}
+                    </p>
+                    <Link
+                      to="/dashboard"
+                      onClick={() => setMenuOpen(false)}
+                      className="block w-full text-center px-3 py-2 bg-purple-500 text-white rounded-md mb-2"
+                    >
+                      Dashboard
+                    </Link>
+                    <button
+                      onClick={() => {
+                        logout();
+                        setMenuOpen(false);
+                      }}
+                      className="block w-full px-3 py-2 border rounded-md text-sm"
+                    >
+                      Salir
+                    </button>
+                  </>
+                ) : (
+                  <Link
+                    to="/login"
+                    onClick={() => setMenuOpen(false)}
+                    className="block w-full text-center px-3 py-2 bg-purple-900 text-white rounded-md"
+                  >
+                    Iniciar sesión
+                  </Link>
+                )}
+              </div>
             </div>
           </motion.nav>
         )}

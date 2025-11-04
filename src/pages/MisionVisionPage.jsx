@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSparkleEffect } from './useSparkleEffect';
+import { useSparkleEffect } from '../useSparkleEffect';
 
 // Componente de Tarjeta Reutilizable
 const MvCard = ({ icon, title, children }) => (

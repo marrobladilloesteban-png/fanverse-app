@@ -4,38 +4,52 @@ import Footer from "./components/Footer";
 import Inicio from "./pages/Inicio";
 import Catalogo from "./pages/Catalogo";
 import QuienesSomos from "./pages/QuienesSomos";
-import MisionVision from "./pages/MisionVision";
+import MisionVision from "./pages/MisionVisionPage";
 import Contacto from "./pages/Contacto";
 import Albumes from "./pages/Albumes";
-
-
-
+import Login from "./pages/Login.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import ProtectedRoute from "./auth/ProtectedRoute.jsx";
+import { AuthProvider } from "./auth/AuthProvider.jsx"; // 👈 Agregado correctamente
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      {/* FONDO GENERAL DEGRADADO */}
-      <div className="absolute left-0 right-0 mt-2 bg-white text-indigo-700 rounded-lg shadow-md z-10 transition-all duration-300 ease-in-out animate-fadeIn min-h-screen bg-gradient-to-r from-pink-400 to-indigo-400 text-white">
-        <Routes>
-          <Route path="/" element={<Inicio />} />
-          <Route path="/catalogo/*" element={<Catalogo />} />
-          <Route path="/quienes" element={<QuienesSomos />} />
-          <Route path="/mision-vision" element={<MisionVision />} />
-          <Route path="/contacto" element={<Contacto />} />
-          <Route path="/catalogo/albumes" element={<Albumes />} />
+      {/* ✅ Ahora AuthProvider envuelve toda la app */}
+      <AuthProvider>
+        <Navbar />
 
-        </Routes>
-      </div>
-      
+        {/* FONDO GENERAL DEGRADADO */}
+          <div className="relative min-h-screen my-5 bg-gradient-to-r from-pink-400 to-indigo-400 text-white transition-all duration-300 ease-in-out">
+          <Routes>
+            {/* 🌸 RUTAS PÚBLICAS */}
+            <Route path="/" element={<Inicio />} />
+            <Route path="/catalogo/*" element={<Catalogo />} />
+            <Route path="/quienes" element={<QuienesSomos />} />
+            <Route path="/mision-vision" element={<MisionVision />} />
+            <Route path="/contacto" element={<Contacto />} />
+            <Route path="/catalogo/albumes" element={<Albumes />} />
 
-      <Footer />
+            {/* 🌸 LOGIN */}
+            <Route path="/login" element={<Login />} />
+
+            {/* 🌸 RUTA PROTEGIDA */}
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* 🌸 404 */}
+            <Route path="*" element={<div className="p-6 text-center">404 - Página no encontrada</div>} />
+          </Routes>
+        </div>
+
+        <Footer />
+      </AuthProvider>
     </BrowserRouter>
-    
-
   );
 }
-
-
-
-
