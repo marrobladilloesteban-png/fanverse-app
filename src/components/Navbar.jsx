@@ -8,7 +8,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
-  const { user, logout } = useAuth(); 
+  const { user, logout } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ const Navbar = () => {
       setSearch("");
       setMenuOpen(false);
     }
-    
+
   };
 
   const navLinks = [
@@ -29,7 +29,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="bg-white shadow-md fixed top-0 w-full z-50">
+    <header className="bg-white shadow-md sticky top-0 w-full z-50">
       <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
         {/* LOGO */}
         <div className="flex items-center gap-2">
@@ -43,10 +43,9 @@ const Navbar = () => {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `px-3 py-2 rounded-md text-sm font-medium transition-all ${
-                  isActive
-                    ? "bg-purple-500 text-white"
-                    : "text-gray-700 hover:bg-pink-100"
+                `px-3 py-2 rounded-md text-sm font-medium transition-all ${isActive
+                  ? "bg-purple-500 text-white"
+                  : "text-gray-700 hover:bg-pink-100"
                 }`
               }
               end
@@ -84,6 +83,13 @@ const Navbar = () => {
                 >
                   Dashboard
                 </Link>
+                {/* ✅ Nuevo link al Perfil */}
+                    <Link
+                      to="/perfil"
+                      className="px-3 py-1.5 rounded border text-sm"
+                    >
+                      Perfil
+                    </Link>
                 <button
                   onClick={logout}
                   className="px-3 py-1.5 rounded border text-sm"
@@ -128,10 +134,9 @@ const Navbar = () => {
                   to={link.to}
                   onClick={() => setMenuOpen(false)}
                   className={({ isActive }) =>
-                    `w-full px-3 py-2 rounded-md ${
-                      isActive
-                        ? "bg-purple-500 text-white"
-                        : "text-gray-700 hover:bg-blue-100"
+                    `w-full px-3 py-2 rounded-md ${isActive
+                      ? "bg-purple-500 text-white"
+                      : "text-gray-700 hover:bg-blue-100"
                     }`
                   }
                   end
@@ -162,6 +167,7 @@ const Navbar = () => {
                     <p className="text-gray-700 mb-2">
                       Hola, {user.displayName || user.email}
                     </p>
+                    {/* LINK AL DASHBOARD */}
                     <Link
                       to="/dashboard"
                       onClick={() => setMenuOpen(false)}
@@ -169,6 +175,14 @@ const Navbar = () => {
                     >
                       Dashboard
                     </Link>
+                    {/* ✅ Nuevo link al Perfil */}
+                    <Link
+                      to="/perfil"
+                      className="px-3 py-1.5 rounded border text-sm"
+                    >
+                      Perfil
+                    </Link>
+
                     <button
                       onClick={() => {
                         logout();

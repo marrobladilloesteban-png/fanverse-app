@@ -34,7 +34,7 @@ export default function Contacto() {
   };
 
   return (
-    <main className="pt-24 p-6 flex flex-col items-center bg-gradient-to-r from-pink-400 to-indigo-400 min-h-screen text-white">
+    <main className="p-6 flex flex-col items-center bg-gradient-to-r from-pink-400 to-indigo-400 min-h-screen text-white">
       <h1 className="text-4xl font-bold mb-6">📩 Contáctanos</h1>
 
       <form

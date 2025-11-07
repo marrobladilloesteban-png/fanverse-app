@@ -3,7 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthProvider";
 
 export default function Login() {
-  const { login, register, resetPassword, setError, error } = useAuth();
+  const {
+    login,
+    register,
+    resetPassword,
+    setError,
+    error,
+    loginWithGoogle,
+  } = useAuth();
   const [mode, setMode] = useState("login");
   const [form, setForm] = useState({ email: "", password: "", displayName: "" });
   const [submitting, setSubmitting] = useState(false);
@@ -35,47 +42,60 @@ export default function Login() {
     }
   };
 
+  // 🔹 NUEVO: handler para Google
+  const handleGoogleLogin = async () => {
+    setSubmitting(true);
+    setError("");
+    try {
+      await loginWithGoogle();
+      navigate("/dashboard");
+    } catch (err) {
+      const msg =
+        err?.code?.replace("auth/", "").replaceAll("-", " ") ||
+        "error al iniciar con google";
+      setError(msg);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
-    <div className="min-h-[80dvh] flex flex-col items-center justify-center px-4 text-center">
+    <div className="min-h-[80dvh] flex flex-col items-center justify-center p-6 px-4 text-center">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white-800 mb-2">
           Inicia sesión en Fanverse
         </h1>
         <p className="text-white max-w-md">
-          Solo los administradores de Fanverse pueden registrarse.  
+          Solo los administradores de Fanverse pueden registrarse.
           Si ya tienes acceso, inicia sesión con tus credenciales.
         </p>
       </div>
 
-      {/* Formulario original sin tocar */}
       <div className="w-full max-w-md bg-white/90 backdrop-blur-lg p-8 rounded-2xl shadow-2xl border border-white/30">
         <div className="flex gap-2 mb-6">
           <button
-            className={`flex-1 py-2 rounded-lg font-medium transition ${
-              mode === "login"
+            className={`flex-1 py-2 rounded-lg font-medium transition ${mode === "login"
                 ? "bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-md"
                 : "bg-white/70 text-gray-800 border border-gray-200 hover:bg-white"
-            }`}
+              }`}
             onClick={() => setMode("login")}
           >
             Entrar
           </button>
           <button
-            className={`flex-1 py-2 rounded-lg font-medium transition ${
-              mode === "register"
+            className={`flex-1 py-2 rounded-lg font-medium transition ${mode === "register"
                 ? "bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-md"
                 : "bg-white/70 text-gray-800 border border-gray-200 hover:bg-white"
-            }`}
+              }`}
             onClick={() => setMode("register")}
           >
             Crear cuenta
           </button>
           <button
-            className={`flex-1 py-2 rounded-lg font-medium transition ${
-              mode === "reset"
+            className={`flex-1 py-2 rounded-lg font-medium transition ${mode === "reset"
                 ? "bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-md"
                 : "bg-white/70 text-gray-800 border border-gray-200 hover:bg-white"
-            }`}
+              }`}
             onClick={() => setMode("reset")}
           >
             Olvidé contraseña
@@ -135,12 +155,25 @@ export default function Login() {
             {submitting
               ? "Procesando…"
               : mode === "login"
-              ? "Entrar"
-              : mode === "register"
-              ? "Crear cuenta"
-              : "Enviar correo"}
+                ? "Entrar"
+                : mode === "register"
+                  ? "Crear cuenta"
+                  : "Enviar correo"}
           </button>
-
+          {/* 🔹 Botón Google OAuth */}
+          <button
+            type="button"
+            disabled={submitting}
+            onClick={handleGoogleLogin}
+            className="w-full mt-4 py-3 rounded-lg text-white font-medium shadow-md bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition disabled:opacity-60"
+          >
+            <img
+              src="https://www.svgrepo.com/show/475656/google-color.svg"
+              alt="Google"
+              className="w-5 h-5"
+            />
+            Iniciar sesión con Googlee
+          </button>
           <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3Jyb3NxdTVrN3U1NGk3bHl1aHdjZnprOW80dTcwM2E0cnM2dzczOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hvFQhNDTMQjXyKbnbb/giphy.gif" alt="" />
         </form>
       </div>

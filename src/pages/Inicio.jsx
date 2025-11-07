@@ -94,7 +94,7 @@ export default function Inicio() {
   ];
 
   return (
-    <main className="text-center pt-24 p-6 max-w-6xl mx-auto text-white">
+    <main className="text-center p-6 max-w-6xl mx-auto text-white">
       <h1 className="text-3xl font-bold mb-4">
         Fanverse: Donde tu pasión por la música encuentra su lugar
       </h1>

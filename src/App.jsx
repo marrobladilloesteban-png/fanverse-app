@@ -11,6 +11,7 @@ import Login from "./pages/Login.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import ProtectedRoute from "./auth/ProtectedRoute.jsx";
 import { AuthProvider } from "./auth/AuthProvider.jsx"; // 👈 Agregado correctamente
+import Profile from "./pages/Profile.jsx"; // ✅ NUEVO IMPORT
 
 export default function App() {
   return (
@@ -20,7 +21,7 @@ export default function App() {
         <Navbar />
 
         {/* FONDO GENERAL DEGRADADO */}
-          <div className="relative min-h-screen my-5 bg-gradient-to-r from-pink-400 to-indigo-400 text-white transition-all duration-300 ease-in-out">
+        <div className="relative min-h-screen bg-gradient-to-r from-pink-400 to-indigo-400 text-white transition-all duration-300 ease-in-out">
           <Routes>
             {/* 🌸 RUTAS PÚBLICAS */}
             <Route path="/" element={<Inicio />} />
@@ -39,6 +40,16 @@ export default function App() {
               element={
                 <ProtectedRoute>
                   <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* ✅ NUEVA RUTA PROTEGIDA: PERFIL */}
+            <Route
+              path="/perfil"
+              element={
+                <ProtectedRoute>
+                  <Profile />
                 </ProtectedRoute>
               }
             />
