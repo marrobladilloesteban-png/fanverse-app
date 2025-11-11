@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Inicio from "./pages/Inicio";
@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard.jsx";
 import ProtectedRoute from "./auth/ProtectedRoute.jsx";
 import { AuthProvider } from "./auth/AuthProvider.jsx"; // 👈 Agregado correctamente
 import Profile from "./pages/Profile.jsx"; // ✅ NUEVO IMPORT
+import FreshDrops from "./pages/FreshDrops.jsx"
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
             <Route path="/mision-vision" element={<MisionVision />} />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/catalogo/albumes" element={<Albumes />} />
+            <Route path="/fresh-drops" element={<FreshDrops />}></Route>
 
             {/* 🌸 LOGIN */}
             <Route path="/login" element={<Login />} />
@@ -54,8 +56,10 @@ export default function App() {
               }
             />
 
-            {/* 🌸 404 */}
-            <Route path="*" element={<div className="p-6 text-center">404 - Página no encontrada</div>} />
+            {/* Fallback*/}
+            <Route path="*" element={<Navigate to="/fresh-drops" replace />} />
+
+            
           </Routes>
         </div>
 

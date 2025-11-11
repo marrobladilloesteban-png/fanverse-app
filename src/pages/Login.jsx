@@ -161,19 +161,21 @@ export default function Login() {
                   : "Enviar correo"}
           </button>
           {/* 🔹 Botón Google OAuth */}
-          <button
-            type="button"
-            disabled={submitting}
-            onClick={handleGoogleLogin}
-            className="w-full mt-4 py-3 rounded-lg text-white font-medium shadow-md bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition disabled:opacity-60"
-          >
-            <img
-              src="https://www.svgrepo.com/show/475656/google-color.svg"
-              alt="Google"
-              className="w-5 h-5"
-            />
-            Iniciar sesión con Googlee
-          </button>
+          {/* 🔹 Botón Google OAuth mejorado */}
+<button
+  type="button"
+  disabled={submitting}
+  onClick={handleGoogleLogin}
+  className="w-full mt-4 py-3 flex items-center justify-center gap-3 rounded-lg text-white font-medium shadow-md bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition disabled:opacity-60"
+>
+  <img
+    src="https://www.svgrepo.com/show/475656/google-color.svg"
+    alt="Google"
+    className="w-5 h-5"
+  />
+  <span>Iniciar sesión con Google</span>
+</button>
+
           <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3Jyb3NxdTVrN3U1NGk3bHl1aHdjZnprOW80dTcwM2E0cnM2dzczOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hvFQhNDTMQjXyKbnbb/giphy.gif" alt="" />
         </form>
       </div>
