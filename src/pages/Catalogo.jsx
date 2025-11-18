@@ -73,7 +73,13 @@ function Catalogo() {
                 onClick={() => handleOptionClick("regalos")}
                 className="block px-4 py-2 hover:bg-pink-100 w-full text-left rounded-b-lg"
               >
-                Regalos
+                Accesorios
+              </button>
+              <button
+                onClick={() => handleOptionClick("ropabp")}
+                className="block px-4 py-2 hover:bg-pink-100 w-full text-left rounded-b-lg"
+              >
+                Ropa
               </button>
             </div>
           )}
@@ -99,13 +105,13 @@ function Catalogo() {
                 onClick={() => handleOptionClick("tarjetas")}
                 className="block px-4 py-2 hover:bg-pink-100 w-full text-left"
               >
-                Tarjetas
+                Accesorios
               </button>
               <button
                 onClick={() => handleOptionClick("flores")}
                 className="block px-4 py-2 hover:bg-pink-100 w-full text-left rounded-b-lg"
               >
-                Flores
+                Ropa
               </button>
             </div>
           )}

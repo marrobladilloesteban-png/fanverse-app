@@ -122,26 +122,26 @@ function ContenidoCatalogo({ selectedOption }) {
   const lista = tarjetas[selectedOption] || [];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+    <div className="bg-[rgba(245, 235, 242, 0.3)] p-5 rounded-xl shadow-md text-center max-w-[1000px] mx-auto border-2 border-black mt-[20px] mb-[50px]
+grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
       {lista.map((item) => (
         <div
           key={item.nombre}
-          className="bg-white text-indigo-700 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 p-4"
-        >
+          className="bg-white rounded-lg p-4 text-center shadow-lg transition-transform duration-200 ease-in-out hover:scale-105">
           <img
             src={item.imagen}
             alt={item.nombre}
-            className="w-full h-48 object-cover rounded-lg mb-3"
+            className="w-70 h-70 object-cover rounded-lg mb-3"
           />
-          <h3 className="font-semibold text-xl">{item.nombre}</h3>
-          <p className="text-pink-500 font-bold">{item.precio}</p>
+          <h3 className="text-black font-semibold text-xl">{item.nombre}</h3>
+          <p className="text-purple-600 font-bold">{item.precio}</p>
 
           {/* 🛒 Botón con alerta */}
           <button
             onClick={() => agregarAlCarrito(item.nombre)}
             className="mt-3 bg-gradient-to-r from-pink-400 to-indigo-500 text-white font-semibold py-2 px-4 rounded-lg hover:opacity-90 transition"
           >
-            Comprar
+            🛒 Comprar
           </button>
         </div>
       ))}
