@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import React from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Inicio from "./pages/Inicio";
@@ -10,16 +11,23 @@ import Albumes from "./pages/Albumes";
 import Login from "./pages/Login.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import ProtectedRoute from "./auth/ProtectedRoute.jsx";
+import CarritoLateral from "./components/CarritoLateral.jsx";
 import { AuthProvider } from "./auth/AuthProvider.jsx"; // 👈 Agregado correctamente
 import Profile from "./pages/Profile.jsx"; // ✅ NUEVO IMPORT
-import FreshDrops from "./pages/FreshDrops.jsx"
+import FreshDrops from "./pages/FreshDrops.jsx";
+import { CartProvider } from "./context/CartContext.jsx";
+import Carrito from "./pages/Carrito.jsx";
+
 
 export default function App() {
   return (
     <BrowserRouter>
       {/* ✅ Ahora AuthProvider envuelve toda la app */}
       <AuthProvider>
+        <CartProvider>
         <Navbar />
+        <CarritoLateral />
+
 
         {/* FONDO GENERAL DEGRADADO */}
         <div className="relative min-h-screen bg-gradient-to-r from-pink-400 to-indigo-400 text-white transition-all duration-300 ease-in-out">
@@ -32,6 +40,8 @@ export default function App() {
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/catalogo/albumes" element={<Albumes />} />
             <Route path="/fresh-drops" element={<FreshDrops />}></Route>
+            <Route path="/carrito" element={<Carrito />} />
+
 
             {/* 🌸 LOGIN */}
             <Route path="/login" element={<Login />} />
@@ -64,6 +74,7 @@ export default function App() {
         </div>
 
         <Footer />
+        </CartProvider>
       </AuthProvider>
     </BrowserRouter>
   );

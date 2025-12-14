@@ -7,8 +7,10 @@ function Catalogo() {
 
   // 🔄 Abre y cierra los menús desplegables sin tapar los demás
   const toggleDropdown = (product) => {
-    setOpenDropdown(openDropdown === product ? null : product);
-  };
+  setOpenDropdown(openDropdown === product ? null : product);
+  setSelectedOption(null); // ← RESETEA LAS OPCIONES AL CAMBIAR DE GRUPO
+};
+
 
   // ✅ Cambia la categoría seleccionada
   const handleOptionClick = (option) => {
@@ -38,13 +40,13 @@ function Catalogo() {
                 Álbumes
               </button>
               <button
-                onClick={() => handleOptionClick("accesorios")}
+                onClick={() => handleOptionClick("accebts")}
                 className="block px-4 py-2 hover:bg-pink-100 w-full text-left"
               >
                 Accesorios
               </button>
               <button
-                onClick={() => handleOptionClick("ropa")}
+                onClick={() => handleOptionClick("ropabts")}
                 className="block px-4 py-2 hover:bg-pink-100 w-full text-left rounded-b-lg"
               >
                 Ropa
@@ -70,7 +72,7 @@ function Catalogo() {
                 Álbumes
               </button>
               <button
-                onClick={() => handleOptionClick("regalos")}
+                onClick={() => handleOptionClick("accebp")}
                 className="block px-4 py-2 hover:bg-pink-100 w-full text-left rounded-b-lg"
               >
                 Accesorios
@@ -102,13 +104,13 @@ function Catalogo() {
                 Álbumes
               </button>
               <button
-                onClick={() => handleOptionClick("tarjetas")}
+                onClick={() => handleOptionClick("accetw")}
                 className="block px-4 py-2 hover:bg-pink-100 w-full text-left"
               >
                 Accesorios
               </button>
               <button
-                onClick={() => handleOptionClick("flores")}
+                onClick={() => handleOptionClick("ropatw")}
                 className="block px-4 py-2 hover:bg-pink-100 w-full text-left rounded-b-lg"
               >
                 Ropa

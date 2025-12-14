@@ -1,18 +1,75 @@
-import React from "react";
+import React,{useState} from "react";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "../firebase";
+import { useAuth } from "../auth/AuthProvider";
 import { useSparkleEffect } from "../useSparkleEffect";
+import FeedbackModal from "../components/FeedbackModal";
 
 const MvCard = ({ icon, title, children }) => (
-  <section className="bg-white/70 border-2 border-black rounded-xl p-5 mb-5 shadow-[5px_5px_0_rgba(0,0,0,0.2)] backdrop-blur-md">
-    <div className="flex items-center mb-2 bg-gradient-to-tr from-pink-500 to-purple-500 text-white p-2 rounded-md">
-      <span className="text-2xl mr-2">{icon}</span>
-      <h2 className="text-xl font-semibold">{title}</h2>
+  <section className="
+    bg-white/80
+    border border-black
+    rounded-2xl
+    p-6
+    mb-6
+    shadow-sm
+    backdrop-blur-md
+  ">
+    <div className="flex items-center gap-3 mb-3">
+      <span className="text-3xl">{icon}</span>
+      <h2 className="text-2xl font-bold text-purple-700">
+        {title}
+      </h2>
     </div>
-    <p className="text-gray-800 text-base leading-relaxed">{children}</p>
+
+    <p className="text-gray-700 text-base leading-relaxed">
+      {children}
+    </p>
   </section>
 );
 
+const { user } = useAuth();
+const [loading, setLoading] = useState(false);
+
 const MisionVisionPage = () => {
   useSparkleEffect();
+
+  const { user } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [openFeedback, setOpenFeedback] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [opinion, setOpinion] = useState("");
+  const [enviado, setEnviado] = useState(false);
+
+  const enviarFeedback = async () => {
+    if (rating === 0 || opinion.trim() === "") {
+      alert("Por favor, califica la página y escribe tu opinión 💖");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      await addDoc(collection(db, "feedback"), {
+        rating,
+        opinion,
+        uid: user.uid, // 👈 IMPORTANTE
+        userName: user.displayName || user.email,
+        createdAt: serverTimestamp(),
+      });
+
+      setEnviado(true);
+      setRating(0);
+      setOpinion("");
+    } catch (error) {
+      console.error("Error al guardar feedback:", error);
+      alert("Ocurrió un error al enviar tu feedback 😢");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
 
   return (
     <div
@@ -26,7 +83,23 @@ const MisionVisionPage = () => {
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')] opacity-20"></div>
 
       {/* Contenedor principal */}
-      <main className="relative mb-20 max-w-5xl mx-auto mt-32 px-6 py-10 bg-white/60 border-2 border-black rounded-2xl shadow-[10px_10px_0_rgba(0,0,0,0.2)] backdrop-blur-md z-1 0">
+      <main
+  className="
+    relative
+    mb-20
+    max-w-5xl
+    mx-auto
+    mt-32
+    px-6
+    py-12
+    bg-white/70
+    border border-black
+    rounded-3xl
+    shadow-md
+    backdrop-blur-md
+  "
+>
+
         
 
         {/* Misión */}
@@ -45,9 +118,9 @@ const MisionVisionPage = () => {
 
         {/* Valores */}
         <section className="bg-white/70 border-2 border-black rounded-xl p-5 mb-5 shadow-[6px_6px_0_rgba(0,0,0,0.2)] backdrop-blur-md">
-          <h2 className="text-2xl font-bold text-center mb-5 bg-gradient-to-r from-pink-500 to-purple-800 text-white p-2 rounded-md">
-            💖 NUESTROS VALORES 🎵
-          </h2>
+          <h2 className="text-2xl text-center mb-6 text-purple-700">
+  <p><b>💖 NUESTROS VALORES 🎵</b></p>
+</h2>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
@@ -58,14 +131,14 @@ const MisionVisionPage = () => {
             ].map((v, i) => (
               <div
                 key={i}
-                className="text-center bg-pink-50/80 p-4 rounded-lg border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,0.2)]"
+                className="text-center bg-yellow-100 p-4 rounded-xl border border-black shadow-sm transition hover:scale-105"
               >
                 <span className="text-2xl block mb-2">{v.emoji}</span>
-                <h3 className="font-bold text-lg mb-1">{v.titulo}</h3>
-                <p className="text-sm text-gray-700 mb-2">
+                <h3 className="font-semibold text-lg text-black mb-1">{v.titulo}</h3>
+                <p className="text-sm text-gray-600 mb-3">
                   Representa nuestro compromiso diario.
                 </p>
-                <button className="bg-pink-400 text-white px-3 py-1 text-sm rounded-md shadow-[2px_2px_0_rgba(0,0,0,0.2)] transition hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px_0_rgba(0,0,0,0.3)]">
+                <button className="bg-lilac-200 bg-purple-200 text-black px-4 py-1.5 text-sm rounded-full border border-black hover:bg-pink-200 transition">
                   {v.boton}
                 </button>
               </div>
@@ -75,7 +148,7 @@ const MisionVisionPage = () => {
 
         {/* CTA */}
         <section className="bg-white/70 border-2 border-black rounded-xl p-5 text-center shadow-[6px_6px_0_rgba(0,0,0,0.2)] backdrop-blur-md">
-          <h2 className="text-2xl font-bold text-center mb-5 bg-gradient-to-r from-pink-500 to-purple-500 text-white p-2 rounded-md">
+          <h2 className="text-2xl font-bold text-center mb-6 text-purple-700">
             ¡Únete a la fiesta K-pop! 💜
           </h2>
 
@@ -87,21 +160,97 @@ const MisionVisionPage = () => {
 
           <div className="flex flex-col md:flex-row justify-center items-center gap-4">
             <a href="/" className="w-full md:w-auto">
-              <button className="bg-pink-500 text-white px-5 py-2 text-lg rounded-md shadow-[3px_3px_0_rgba(0,0,0,0.3)] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[5px_5px_0_rgba(0,0,0,0.3)] transition">
+              <button className="bg-pink-300 text-black px-6 py-2.5 text-lg rounded-full border border-black hover:bg-pink-400 transition">
                 🎶 ¡Comienza la música!
               </button>
             </a>
-            <a href="/formulario" className="w-full md:w-auto">
-              <button className="bg-pink-400 text-white px-5 py-2 text-lg rounded-md shadow-[3px_3px_0_rgba(0,0,0,0.3)] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[5px_5px_0_rgba(0,0,0,0.3)] transition">
-                💬 ¡Deja tu feedback!
-              </button>
-            </a>
+            <button
+               onClick={() => setOpenFeedback(true)}
+               className="bg-purple-200 text-black px-6 py-2.5 text-lg rounded-full border border-black hover:bg-purple-300 transition w-full md:w-auto"
+              >
+               💬 ¡Deja tu feedback!
+            </button>
+
+
           </div>
         </section>
       </main>
+      {openFeedback && (
+  <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+    <div className="bg-white rounded-xl p-6 w-[90%] max-w-md shadow-lg">
+
+      {!enviado ? (
+        <>
+          <h3 className="text-xl font-bold text-purple-700 mb-3 text-center">
+            💖 Cuéntanos tu experiencia
+          </h3>
+
+          {/* ⭐ Estrellas */}
+          <div className="flex justify-center mb-4">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <button
+                key={star}
+                onClick={() => setRating(star)}
+                className={`text-3xl ${
+                  star <= rating ? "text-pink-400" : "text-gray-300"
+                }`}
+              >
+                ★
+              </button>
+            ))}
+          </div>
+
+          {/* ✍️ Opinión */}
+          <textarea
+            value={opinion}
+            onChange={(e) => setOpinion(e.target.value)}
+            placeholder="Escribe tu opinión aquí..."
+            className="w-full border rounded-md p-2 mb-4"
+          />
+
+          <button
+  onClick={enviarFeedback}
+  disabled={loading}
+  className="w-full bg-purple-500 text-white py-2 rounded-md hover:bg-purple-600 transition"
+>
+  {loading ? "Enviando..." : "Enviar feedback"}
+</button>
+
+        </>
+      ) : (
+        /* 🌸 MENSAJE DE GRACIAS */
+        <div className="text-center">
+          <p className="text-2xl mb-2">💖</p>
+          <h3 className="text-xl font-semibold text-purple-700 mb-2">
+            ¡Gracias por tu opinión!
+          </h3>
+          <p className="text-gray-700"> 
+Tu opinión nos ayuda a mejorar y a crear una experiencia cada vez más especial para nuestra comunidad K-pop ✨🎶
+¡Seguiremos trabajando con mucho amor para ti!💕
+          </p>
+
+          <button
+            onClick={() => {
+              setOpenFeedback(false);
+              setEnviado(false);
+              setRating(0);
+              setOpinion("");
+            }}
+            className="mt-4 bg-pink-400 text-white px-4 py-2 rounded-md"
+          >
+            Cerrar
+          </button>
+        </div>
+      )}
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
+
+
 
 export default MisionVisionPage;
 
