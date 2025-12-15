@@ -28,13 +28,12 @@ const MvCard = ({ icon, title, children }) => (
   </section>
 );
 
-const { user } = useAuth();
-const [loading, setLoading] = useState(false);
+
 
 const MisionVisionPage = () => {
-  useSparkleEffect();
+  useSparkleEffect(); // 👈 custom hook (bien)
 
-  const { user } = useAuth();
+  const { user } = useAuth(); // ✅ DENTRO
   const [loading, setLoading] = useState(false);
   const [openFeedback, setOpenFeedback] = useState(false);
   const [rating, setRating] = useState(0);
@@ -42,6 +41,11 @@ const MisionVisionPage = () => {
   const [enviado, setEnviado] = useState(false);
 
   const enviarFeedback = async () => {
+    if (!user) {
+      alert("Debes iniciar sesión para enviar feedback 💖");
+      return;
+    }
+
     if (rating === 0 || opinion.trim() === "") {
       alert("Por favor, califica la página y escribe tu opinión 💖");
       return;
@@ -53,7 +57,7 @@ const MisionVisionPage = () => {
       await addDoc(collection(db, "feedback"), {
         rating,
         opinion,
-        uid: user.uid, // 👈 IMPORTANTE
+        uid: user.uid,
         userName: user.displayName || user.email,
         createdAt: serverTimestamp(),
       });
@@ -62,8 +66,7 @@ const MisionVisionPage = () => {
       setRating(0);
       setOpinion("");
     } catch (error) {
-      console.error("Error al guardar feedback:", error);
-      alert("Ocurrió un error al enviar tu feedback 😢");
+      console.error(error);
     } finally {
       setLoading(false);
     }
