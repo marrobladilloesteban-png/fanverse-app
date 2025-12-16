@@ -22,7 +22,8 @@ export default function Footer() {
         <div className="text-center sm:text-left">
           <h3 className="text-lg font-semibold text-gray-800 mb-3">Navegación</h3>
           <ul className="space-y-2 text-gray-600">
-            <li><Link to="/" className="hover:text-pink-500 hover:font-semibold transition">Inicio</Link></li>
+            <li><Link to="/" className="hover:text-pink-500 hover:font-semibold transition">Highlight</Link></li>
+            <li><Link to="/banner" className="hover:text-pink-500 hover:font-semibold transition">Inicio</Link></li>
             <li><Link to="/catalogo" className="hover:text-pink-500 hover:font-semibold transition">Catálogo</Link></li>
             <li><Link to="/quienes" className="hover:text-pink-500 hover:font-semibold transition">Quiénes Somos</Link></li>
             <li><Link to="/mision-vision" className="hover:text-pink-500 hover:font-semibold transition">Misión y Visión</Link></li>

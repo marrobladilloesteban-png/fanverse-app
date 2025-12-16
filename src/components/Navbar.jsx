@@ -19,7 +19,7 @@ export default function Navbar() {
   const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
 
   const navLinks = [
-    { to: "/", label: "Banner" },
+    { to: "/", label: "Highlight" },
     {to: "/banner", label: "Inicio"},
     { to: "/catalogo", label: "Catálogo" },
     { to: "/fresh-drops", label: "Fresh Drops" },

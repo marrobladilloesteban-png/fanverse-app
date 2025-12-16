@@ -18,7 +18,7 @@ function Catalogo() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-pink-400 to-indigo-400 text-white p-6">
+    <div className="min-h-screen bg-gradient-to-r from-pink-400 to-indigo-400 text-white p-6 pt-24">
       <h1 className="text-4xl font-bold text-center mb-8 drop-shadow-lg">Catálogo</h1>
 
       {/* 🔹 Menú principal */}

@@ -78,7 +78,7 @@ export default function Inicio() {
 
 
   return (
-    <main className="pt-32 px-6 max-w-6xl mx-auto text-white">
+    <main className="pt-24 px-6 max-w-6xl mx-auto text-white">
 
       {/* 🌸 PROPUESTA DE VALOR */}
       <section className="text-center mb-12">
@@ -111,7 +111,7 @@ export default function Inicio() {
 
 
       {/* 💡 BENEFICIOS */}
-<section className="mt-20 text-center">
+<section className="mt-0 text-center">
   <h2 className="text-3xl font-bold mb-3 text-white">
     ¿Por qué elegir Fanverse?
   </h2>

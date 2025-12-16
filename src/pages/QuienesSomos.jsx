@@ -34,7 +34,7 @@ export default function QuienesSomos() {
 
   return (
     <main className="pt-30 p-6 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4 drop-shadow-lg text-white/90">
+      <h1 className="text-3xl font-bold mb-4 drop-shadow-lg text-white/90 text-center">
         Conoce al equipo detrás de Fanverse
       </h1>
       <p className="mb-5 text-white">

@@ -162,11 +162,7 @@ const MisionVisionPage = () => {
           />
 
           <div className="flex flex-col md:flex-row justify-center items-center gap-4">
-            <a href="/" className="w-full md:w-auto">
-              <button className="bg-pink-300 text-black px-6 py-2.5 text-lg rounded-full border border-black hover:bg-pink-400 transition">
-                🎶 ¡Comienza la música!
-              </button>
-            </a>
+            
             <button
               onClick={() => setOpenFeedback(true)}
               className="bg-purple-200 text-black px-6 py-2.5 text-lg rounded-full border border-black hover:bg-purple-300 transition w-full md:w-auto"

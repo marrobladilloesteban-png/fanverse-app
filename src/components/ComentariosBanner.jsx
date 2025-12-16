@@ -28,7 +28,7 @@ export default function ComentariosBanner() {
       {/* 💬 SECCIÓN DE COMENTARIOS */}
       <section className="
         py-5 px-1
-        bg-gradient-to-r from-pink-400 to-indigo-400
+        bg-gradient-pink-400 
         text-white
       ">
         <div className="max-w-6xl mx-auto text-center">
