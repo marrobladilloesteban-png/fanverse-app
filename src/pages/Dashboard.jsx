@@ -115,7 +115,7 @@ export default function Dashboard() {
     <div className="min-h-[80vh] -to-b from-slate-50 via-slate-50 to-slate-100">
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-6">
-          <h1 className="text-2xl font-semibold text-slate-900">
+          <h1 className="text-3xl font-semibold text-slate-900 drop-shadow-lg text-white/90">
             Administración de álbumes de K-Pop
           </h1>
           <p className="text-sm text-slate-600">

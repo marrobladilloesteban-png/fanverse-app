@@ -23,10 +23,10 @@ export default function Navbar() {
     { to: "/catalogo", label: "Catálogo" },
     { to: "/fresh-drops", label: "Fresh Drops" },
     { to: "/quienes", label: "Quiénes somos" },
-    {to: "/mision-vision", label:"Misión y Visión"},
+    { to: "/mision-vision", label: "Misión y Visión" },
     { to: "/contacto", label: "Contacto" },
-    {to: "/dashboard", label: "Dashboard"},
-    
+    { to: "/dashboard", label: "Dashboard" },
+
   ];
 
   const handleSearch = (e) => {
@@ -38,31 +38,31 @@ export default function Navbar() {
   };
 
   const getInitial = () => {
-  if (user?.displayName) return user.displayName.charAt(0).toUpperCase();
-  if (user?.email) return user.email.charAt(0).toUpperCase();
-  return "?";
-};
-const getAvatarColor = () => {
-  const text = user?.displayName || user?.email || "U";
+    if (user?.displayName) return user.displayName.charAt(0).toUpperCase();
+    if (user?.email) return user.email.charAt(0).toUpperCase();
+    return "?";
+  };
+  const getAvatarColor = () => {
+    const text = user?.displayName || user?.email || "U";
 
-  let hash = 0;
-  for (let i = 0; i < text.length; i++) {
-    hash = text.charCodeAt(i) + ((hash << 5) - hash);
-  }
+    let hash = 0;
+    for (let i = 0; i < text.length; i++) {
+      hash = text.charCodeAt(i) + ((hash << 5) - hash);
+    }
 
-  const colors = [
-    "bg-purple-600",
-    "bg-pink-600",
-    "bg-indigo-600",
-    "bg-blue-600",
-    "bg-emerald-600",
-    "bg-teal-600",
-    "bg-rose-600",
-    "bg-orange-500",
-  ];
+    const colors = [
+      "bg-purple-600",
+      "bg-pink-600",
+      "bg-indigo-600",
+      "bg-blue-600",
+      "bg-emerald-600",
+      "bg-teal-600",
+      "bg-rose-600",
+      "bg-orange-500",
+    ];
 
-  return colors[Math.abs(hash) % colors.length];
-};
+    return colors[Math.abs(hash) % colors.length];
+  };
 
 
 
@@ -82,10 +82,9 @@ const getAvatarColor = () => {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `text-sm font-medium transition ${
-                  isActive
-                    ? "text-purple-600"
-                    : "text-gray-700 hover:text-purple-500"
+                `text-sm font-medium transition ${isActive
+                  ? "text-purple-600"
+                  : "text-gray-700 hover:text-purple-500"
                 }`
               }
             >
@@ -121,20 +120,20 @@ const getAvatarColor = () => {
 
           {/* 👋 NOMBRE DEL USUARIO (ANTES DEL BOTÓN) */}
           {user && (
-  <div className="hidden lg:flex items-center gap-2">
-    <div
-      className={`w-9 h-9 rounded-full text-white
+            <div className="hidden lg:flex items-center gap-2">
+              <div
+                className={`w-9 h-9 rounded-full text-white
                   flex items-center justify-center
                   font-semibold text-sm ${getAvatarColor()}`}
-    >
-      {getInitial()}
-    </div>
+              >
+                {getInitial()}
+              </div>
 
-    <span className="text-sm text-gray-700 max-w-[120px] truncate">
-      {user.displayName || user.email}
-    </span>
-  </div>
-)}
+              <span className="text-sm text-gray-700 max-w-[120px] truncate">
+                {user.displayName || user.email}
+              </span>
+            </div>
+          )}
 
 
 
@@ -202,25 +201,25 @@ const getAvatarColor = () => {
             <div className="flex flex-col p-4 gap-3">
 
               {user && (
-  <div className="flex items-center gap-3 mb-3">
-    <div
-      className={`w-10 h-10 rounded-full text-white
+                <div className="flex items-center gap-3 mb-3">
+                  <div
+                    className={`w-10 h-10 rounded-full text-white
                   flex items-center justify-center
                   font-semibold ${getAvatarColor()}`}
-    >
-      {getInitial()}
-    </div>
+                  >
+                    {getInitial()}
+                  </div>
 
-    <div className="text-sm">
-      <p className="font-medium text-gray-800">
-        {user.displayName || "Usuario"}
-      </p>
-      <p className="text-gray-500 text-xs truncate">
-        {user.email}
-      </p>
-    </div>
-  </div>
-)}
+                  <div className="text-sm">
+                    <p className="font-medium text-gray-800">
+                      {user.displayName || "Usuario"}
+                    </p>
+                    <p className="text-gray-500 text-xs truncate">
+                      {user.email}
+                    </p>
+                  </div>
+                </div>
+              )}
 
 
 

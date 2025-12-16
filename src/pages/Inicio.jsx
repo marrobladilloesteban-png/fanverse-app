@@ -4,11 +4,10 @@ import blackpink from "../assets/blackpink.jpg";
 import grupobts from "../assets/grupobts.jpg";
 import twice from "../assets/twice.jpg";
 import itzy from "../assets/itzy.jpg";
-
-
+import banner from "../assets/bannerU.png"
 
 export default function Inicio() {
-  const images = [blackpink, grupobts, twice, itzy];
+  const images = [banner, blackpink, grupobts, twice, itzy];
 
   const settings = {
     dots: true,
@@ -95,7 +94,7 @@ export default function Inicio() {
 
   return (
     <main className="text-center p-6 max-w-6xl mx-auto text-white">
-      <h1 className="text-3xl font-bold mb-4">
+      <h1 className="text-4xl font-bold mb-4 drop-shadow-lg text-white/90">
         Fanverse: Donde tu pasión por la música encuentra su lugar
       </h1>
       <p className="mb-6">
@@ -122,7 +121,7 @@ export default function Inicio() {
 
       {/* 🎵 Título de las bandas */}
       <section className="text-center mt-10">
-        <h1 className="text-4xl font-bold mb-3">BANDAS MÁS POPULARES</h1>
+        <h1 className="text-3xl font-bold mb-3">BANDAS MÁS POPULARES</h1>
         <p className="text-lg max-w-xl mx-auto">
           Descubre nuestros productos y conoce más sobre tus grupos favoritos 💖
         </p>
@@ -153,7 +152,7 @@ export default function Inicio() {
       </section>
 
       <section className="text-center mt-10">
-        <h2 className="text-4xl font-bold mb-3">¿Por qué Fanverse? Porque tu pasión merece un lugar donde suene fuerte.</h2>
+        <h2 className="text-3xl font-bold mb-3">¿Por qué Fanverse? Porque tu pasión merece un lugar donde suene fuerte.</h2>
         
       </section>
 
@@ -178,22 +177,8 @@ export default function Inicio() {
               <p className="text-sm">{razon.descripcion}</p>
             </div>
           </motion.div>
-          
-
         ))}
       </section>
-
-
     </main>
-    
-
-
-    
-    
-
-
-    
-    
-
   );
 }

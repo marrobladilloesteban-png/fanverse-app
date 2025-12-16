@@ -8,7 +8,7 @@ export default function CarritoLateral() {
     total,
     aumentarCantidad,
     disminuirCantidad,
-    eliminarProducto,
+    eliminarDelCarrito,
     finalizarCompra,
   } = useCart();
 
@@ -98,7 +98,9 @@ export default function CarritoLateral() {
 
                 {/* ELIMINAR */}
                 <button
-                  onClick={() => eliminarProducto(item.id)}
+                  onClick={() => {
+                    console.log("CLICK EN BASURA", item.id);
+                     eliminarDelCarrito(item.id)}}
                   className="text-gray-400 hover:text-red-500"
                 >
                   🗑️

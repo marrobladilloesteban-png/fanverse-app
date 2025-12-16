@@ -132,8 +132,8 @@ export function CartProvider({ children }) {
         abrirCarrito,
         cerrarCarrito,
         agregarAlCarrito,
-        aumentarCantidad,     // ✅ NUEVO
-        disminuirCantidad,    // ✅ NUEVO
+        aumentarCantidad,     
+        disminuirCantidad,    
         eliminarDelCarrito,
         vaciarCarrito,
         finalizarCompra,

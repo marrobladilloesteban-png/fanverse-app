@@ -1,6 +1,8 @@
 import yadiPng from '../assets/yadira-png.png'
 import mariPng from '../assets/marisa-png.png'
 import briPng from '../assets/britney-png.png'
+import { Link } from "react-router-dom";
+import MisionVisionPage from './MisionVisionPage';
 
 export default function QuienesSomos() {
   const integrantes = [
@@ -143,11 +145,15 @@ export default function QuienesSomos() {
           </div>
         </div>
 
-        {/* Botón final */}
         <div className="mt-10">
-          <button className="px-6 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-pink-500 to-purple-600 hover:scale-105 transition shadow-md">
+          <Link
+            to="/mision-vision"
+            className="inline-block px-6 py-3 rounded-full font-semibold text-white
+               bg-gradient-to-r from-pink-500 to-purple-600
+               hover:scale-105 transition shadow-md"
+          >
             Conoce nuestra misión completa
-          </button>
+          </Link>
         </div>
       </section>
 

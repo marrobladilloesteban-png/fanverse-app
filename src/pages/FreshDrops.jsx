@@ -24,16 +24,14 @@ export default function Cursos() {
     <div className="min-h-[80vh] -to-b from-slate-50 to-slate-100">
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Hero */}
-       <div className="max-w-6xl mb-8 text-center mx-auto">
-  <h1 className="text-3xl sm:text-4xl font-bold text-white-900 mb-3">
-    LO NUEVO EN FANVERSE
-  </h1>
-  <p className="text-sm sm:text-base text-white-700 leading-relaxed">
-    ¡Recién salidos del estudio, directo a tu vitrina! Sumérgete en los lanzamientos más vibrantes del universo K-pop: álbums que acaban de ver la luz, ediciones especiales que marcan nuevas eras y colecciones que harán brillar tu fandom. Esta sección se actualiza en tiempo real desde nuestro backstage, para que siempre estés al día con lo más fresh, lo más icónico y lo más esperado. ¡Prepárate para agregar nuevas joyas a tu colección y vivir cada comeback como si estuvieras en primera fila!
-  </p>
-</div>
-
-
+        <div className="max-w-6xl mb-8 text-center mx-auto">
+          <h1 className="text-3xl font-bold mb-4 drop-shadow-lg text-white/90">
+            LO NUEVO EN FANVERSE
+          </h1>
+          <p className="text-sm sm:text-base text-white-700 leading-relaxed">
+            ¡Recién salidos del estudio, directo a tu vitrina! Sumérgete en los lanzamientos más vibrantes del universo K-pop: álbums que acaban de ver la luz, ediciones especiales que marcan nuevas eras y colecciones que harán brillar tu fandom. Esta sección se actualiza en tiempo real desde nuestro backstage, para que siempre estés al día con lo más fresh, lo más icónico y lo más esperado. ¡Prepárate para agregar nuevas joyas a tu colección y vivir cada comeback como si estuvieras en primera fila!
+          </p>
+        </div>
 
         {/* Contenido */}
         {loading ? (
@@ -58,13 +56,13 @@ export default function Cursos() {
                     {curso.descripcion}
                   </p>
                   {curso.fecha && (
-  <p className="text-[11px] text-slate-500 mb-2">
-    📅 Fecha disponible:{" "}
-    {curso.fecha.toDate
-      ? curso.fecha.toDate().toLocaleDateString("es-PE") // convierte el Timestamp a Date
-      : new Date(curso.fecha).toLocaleDateString("es-PE")}
-  </p>
-)}
+                    <p className="text-[11px] text-slate-500 mb-2">
+                      📅 Fecha disponible:{" "}
+                      {curso.fecha.toDate
+                        ? curso.fecha.toDate().toLocaleDateString("es-PE") // convierte el Timestamp a Date
+                        : new Date(curso.fecha).toLocaleDateString("es-PE")}
+                    </p>
+                  )}
 
 
 

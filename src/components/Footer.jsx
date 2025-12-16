@@ -25,6 +25,7 @@ export default function Footer() {
             <li><Link to="/" className="hover:text-pink-500 hover:font-semibold transition">Inicio</Link></li>
             <li><Link to="/catalogo" className="hover:text-pink-500 hover:font-semibold transition">Catálogo</Link></li>
             <li><Link to="/quienes" className="hover:text-pink-500 hover:font-semibold transition">Quiénes Somos</Link></li>
+            <li><Link to="/mision-vision" className="hover:text-pink-500 hover:font-semibold transition">Misión y Visión</Link></li>
             <li><Link to="/contacto" className="hover:text-pink-500 hover:font-semibold transition">Contáctanos</Link></li>
           </ul>
         </div>
@@ -36,7 +37,7 @@ export default function Footer() {
             <FaPhoneAlt className="text-pink-500" /> <span>+51 987 654 321</span>
           </div>
           <div className="flex items-center justify-center sm:justify-start gap-2 mb-5 text-gray-600">
-            <FaEnvelope className="text-pink-500" /> <span>contacto@fanverse.com</span>
+            <FaEnvelope className="text-pink-500" /> <span>contacto_fanverse@gmail.com</span>
           </div>
 
           <div className="flex justify-center sm:justify-start gap-5 text-xl">
