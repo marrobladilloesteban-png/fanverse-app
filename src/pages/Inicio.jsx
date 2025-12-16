@@ -5,6 +5,8 @@ import grupobts from "../assets/grupobts.jpg";
 import twice from "../assets/twice.jpg";
 import itzy from "../assets/itzy.jpg";
 import banner from "../assets/bannerU.png"
+import SeccionProductos from "../components/SeccionProductos"
+import { SectionIcon } from "lucide-react";
 
 export default function Inicio() {
   const images = [banner, blackpink, grupobts, twice, itzy];
@@ -20,51 +22,7 @@ export default function Inicio() {
     arrows: false,
   };
 
-  // 💜 Lista de bandas para las cartillas
-  const bandas = [
-    {
-      nombre: "BTS",
-      imagen:
-        "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGFsa2g2MGVpOGt5dDR3NWFyeHhseDUxeWhjcmhid2sxMmY5aXo5NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/CLhMG06HSUoMiZ1PXB/giphy.gif",
-      descripcion:
-        "BTS canta enérgicas canciones de pop con mensajes de confianza y superación, perfectas para animarte a perseguir tus sueños",
-    },
-    {
-      nombre: "BLACKPINK",
-      imagen:
-        "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmxnbjZ0ZmRjbjhiZncyeDFoN256eWVsbTIzNTd1NjdtNnQ0dXltZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT3i1cvbSQSXENS9rO/giphy.gif",
-      descripcion:
-        "BLACKPINK Conocidas por su estilo poderoso. Fusionan pop, dance con toques de hip-hop, y cantan sobre confianza, independencia y empoderamiento.",
-    },
-    {
-      nombre: "STRAYKIDS",
-      imagen:
-        "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWZxOHVweG9sZXIyeHc2b3V4emczczJibmQxeTljaW5vbmo0NDZncSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/34McE64PE0ypRpMjTf/giphy.gif",
-      descripcion:
-        "Juventud explosiva que mezcla hip-hop, pop y EDM con letras crudas y coreografías potentes.Hablan de amistad, fuerza interior y superación",
-    },
-    {
-      nombre: "TWICE",
-      imagen:
-        "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZW85dTZiMnZ6NWFxdnduc3h1ejRwazBkczcwZzkxMHFtM3M1NTNnZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2YWzCwgfB0GJTii4/giphy.gif",
-      descripcion:
-        "Combinan electropop brillante y coreografías con letras sobre amor, autoestima y juventud. Su música transmite pura energía positiva.",
-    },
-    {
-      nombre: "SEVENTEEN",
-      imagen:
-        "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3dxMWxnOTF2bnptdTR0dzB1ZTJzY3dzbndjYnFuM2pnYnljYzBtNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6wrhZgWvxd4yozMQ/giphy.gif",
-      descripcion:
-        "Brillan con pop, hip-hop y EDM, coros pegajosos y química explosiva. Sus letras celebran la amistad, el crecimiento y el optimismo.",
-    },
-    {
-      nombre: "ITZY",
-      imagen:
-        "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXh6bWk2ZzQ5cGNpZTNlZjJvYWZsNjVldTdvZTkxZWhieXJiaWVueiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KkaSMnv6q48mCWx0fg/giphy.gif",
-      descripcion:
-        "Destacan energía con pop vibrante, electropop y dance. Sus letras empoderan con confianza, ritmo acelerado y actitud feroz.",
-    },
-  ];
+
 
   // 💜 Lista de razon
   const razon = [
@@ -91,94 +49,198 @@ export default function Inicio() {
         "Métodos de pago confiables y protegidos para una experiencia sin preocupaciones.",
     },
   ];
+  const planes = [
+  {
+    name: "PLAN FREE 😎✨",
+    benefits: [
+      "Explora el catálogo completo",
+      "Descubre nuevos lanzamientos",
+    ],
+  },
+  {
+    name: "PLAN CON AMIGOS 👥✨",
+    benefits: [
+      "10% de descuento en todas las compras",
+      "Preventas coordinadas",
+      "Sorteos especiales",
+    ],
+  },
+  {
+    name: "PLAN VIP 👑✨",
+    benefits: [
+      "20% de descuento en todas las compras",
+      "Acceso prioritario",
+      "Photocard Exclusiva",
+      "Envío gratis",
+    ],
+  },
+];
+
 
   return (
-    <main className="text-center p-6 max-w-6xl mx-auto text-white">
-      <h1 className="text-4xl font-bold mb-4 drop-shadow-lg text-white/90">
-        Fanverse: Donde tu pasión por la música encuentra su lugar
-      </h1>
-      <p className="mb-6">
-        Somos más que una tienda: es el lugar donde los verdaderos fans viven
-        su pasión. Encuentra los álbumes de tus idols favoritos, descubre
-        lanzamientos recientes antes que nadie y haz crecer tu colección con
-        solo unos clics. ¡Explora, vibra y colecciona al ritmo del K-pop!
-      </p>
+    <main className="pt-32 px-6 max-w-6xl mx-auto text-white">
 
-      {/* 🎠 Carrusel */}
-      <div className="w-full max-w-5xl rounded-2xl overflow-hidden shadow-2xl bg-white/20 backdrop-blur-md mx-auto">
-        <Slider {...settings}>
-          {images.map((url, index) => (
-            <div key={index}>
-              <img
-                src={url}
-                alt={`Imagen ${index + 1}`}
-                className="w-full h-[400px] object-cover"
-              />
-            </div>
-          ))}
-        </Slider>
-      </div>
-
-      {/* 🎵 Título de las bandas */}
-      <section className="text-center mt-10">
-        <h1 className="text-3xl font-bold mb-3">BANDAS MÁS POPULARES</h1>
-        <p className="text-lg max-w-xl mx-auto">
-          Descubre nuestros productos y conoce más sobre tus grupos favoritos 💖
+      {/* 🌸 PROPUESTA DE VALOR */}
+      <section className="text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
+          Donde el <span className="text-white/80">K-Pop</span> vive contigo
+        </h1>
+        <p className="text-white/90 max-w-2xl mx-auto text-lg">
+          Fanverse es la plataforma para fans reales: álbumes originales,
+          lanzamientos recientes y una experiencia hecha para tu fandom.
         </p>
       </section>
 
-      {/* 🎶 Cartillas de bandas */}
-      <section className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {bandas.map((banda, index) => (
-          <motion.div
-            key={index}
-            className="bg-white text-indigo-700 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            whileHover={{ scale: 1.05 }}
-          >
+      {/* 🎠 CARRUSEL */}
+      <div className="w-full max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl bg-white/20 backdrop-blur-md">
+        <Slider {...settings}>
+          {images.map((url, index) => (
             <img
-              src={banda.imagen}
-              alt={banda.nombre}
-              className="w-full h-56 object-cover"
+              key={index}
+              src={url}
+              alt={`slide-${index}`}
+              className="w-full h-[400px] object-cover"
             />
-            <div className="p-4">
-              <h3 className="text-xl font-semibold mb-2">{banda.nombre}</h3>
-              <p className="text-sm">{banda.descripcion}</p>
-            </div>
-          </motion.div>
-        ))}
-      </section>
+          ))}
+        </Slider>
+      </div>
+      <SeccionProductos/>
 
-      <section className="text-center mt-10">
-        <h2 className="text-3xl font-bold mb-3">¿Por qué Fanverse? Porque tu pasión merece un lugar donde suene fuerte.</h2>
-        
-      </section>
 
-      {/* 🎶 Cartillas de beneficios */}
-      <section className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {razon.map((razon, index) => (
-          <motion.div
-            key={index}
-            className="text-center bg-white-300 text-indigo-700 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            whileHover={{ scale: 1.05 }}
-          >
-            <img
-              src={razon.imagen}
-              alt={razon.nombre}
-              className="w-35 h-35 object-cover ml-20"
-            />
-            <div className="p-4">
-              <h3 className="text-xl font-semibold mb-2">{razon.nombre}</h3>
-              <p className="text-sm">{razon.descripcion}</p>
-            </div>
-          </motion.div>
-        ))}
-      </section>
+
+
+
+      {/* 💡 BENEFICIOS */}
+<section className="mt-20 text-center">
+  <h2 className="text-3xl font-bold mb-3 text-white">
+    ¿Por qué elegir Fanverse?
+  </h2>
+  <p className="text-white/70 max-w-xl mx-auto">
+    Porque tu pasión merece una experiencia segura, moderna y auténtica.
+  </p>
+</section>
+
+<section className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+  {razon.map((r, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ y: -6 }}
+      className="
+        backdrop-blur-md bg-white/10
+        border border-white/20
+        rounded-2xl p-6
+        shadow-lg
+        text-center
+        hover:bg-white/20
+        transition-all
+      "
+    >
+      <img
+        src={r.imagen}
+        alt={r.nombre}
+        className="w-20 h-20 mx-auto mb-4 rounded-full object-cover border border-white/30"
+      />
+
+      <h3 className="font-semibold text-white text-lg mb-2">
+        {r.nombre}
+      </h3>
+
+      <p className="text-sm text-white/70">
+        {r.descripcion}
+      </p>
+    </motion.div>
+  ))}
+</section>
+{/* 💎 PLANES */}
+<section className="mt-24 text-center">
+  <h2 className="text-3xl font-bold mb-3 text-white">
+    PLANES PARA CADA TIPO DE FAN ⚡
+  </h2>
+  <p className="text-white/90 max-w-xl mx-auto mb-12">
+    Elige cómo vivir tu experiencia Fanverse.
+  </p>
+
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {planes.map((plan, i) => (
+      <motion.div
+        className="
+  group
+  bg-white
+  rounded-2xl
+  p-8
+  shadow-xl
+  cursor-pointer
+  transition-all
+  duration-300
++ border-2 border-transparent
++ hover:border-purple-500
+  hover:bg-purple-200
++ flex flex-col
+"
+
+      >
+        {/* TÍTULO */}
+        <h3
+          className="
+            text-2xl font-semibold mb-4
+            text-black
+            group-hover:text-purple-900
+            transition-colors
+          "
+        >
+          {plan.name}
+        </h3>
+
+        {/* BENEFICIOS */}
+        <ul
+          className="
+            space-y-3
+            text-14px
+            font-medium
+            text-gray-700
+            group-hover:text-purple-900
+            transition-colors
+            mb-6
+          "
+        >
+          {plan.benefits.map((item, index) => (
+            <li key={index} className="flex items-start gap-2">
+              <span className="text-purple-400 group-hover:text-purple-700">
+                🎤
+              </span>
+              <span className="tracking-wide">{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        {/* BOTÓN */}
+        <button
+          className="
+            mt-auto
+            px-5 py-2
+            text-sm font-semibold
+            rounded-full
+            bg-black/5 text-black
+            group-hover:bg-purple-300
+            group-hover:text-purple-900
+            transition-all
+          "
+        >
+          Elegir plan
+        </button>
+      </motion.div>
+    ))}
+  </div>
+</section>
+
+
+     
+
+
+      <div className="h-20" />
     </main>
   );
 }

@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Inicio from "./pages/Inicio";
 import Catalogo from "./pages/Catalogo";
+import Banner from "./pages/banner.jsx";
 import QuienesSomos from "./pages/QuienesSomos";
 import MisionVision from "./pages/MisionVisionPage";
 import Contacto from "./pages/Contacto";
@@ -17,6 +18,7 @@ import Profile from "./pages/Profile.jsx"; // ✅ NUEVO IMPORT
 import FreshDrops from "./pages/FreshDrops.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
 import Carrito from "./pages/Carrito.jsx";
+
 
 
 export default function App() {
@@ -41,6 +43,7 @@ export default function App() {
             <Route path="/catalogo/albumes" element={<Albumes />} />
             <Route path="/fresh-drops" element={<FreshDrops />}></Route>
             <Route path="/carrito" element={<Carrito />} />
+            <Route path="/banner" element={<Banner />} />
 
 
             {/* 🌸 LOGIN */}

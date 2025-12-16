@@ -21,7 +21,7 @@ export default function Cursos() {
   }, []);
 
   return (
-    <div className="min-h-[80vh] -to-b from-slate-50 to-slate-100">
+    <div className="pt-24 min-h-[80vh] -to-b from-slate-50 to-slate-100">
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Hero */}
         <div className="max-w-6xl mb-8 text-center mx-auto">

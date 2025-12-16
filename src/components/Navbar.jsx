@@ -19,13 +19,15 @@ export default function Navbar() {
   const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
 
   const navLinks = [
-    { to: "/", label: "Inicio" },
+    { to: "/", label: "Banner" },
+    {to: "/banner", label: "Inicio"},
     { to: "/catalogo", label: "Catálogo" },
     { to: "/fresh-drops", label: "Fresh Drops" },
     { to: "/quienes", label: "Quiénes somos" },
     { to: "/mision-vision", label: "Misión y Visión" },
     { to: "/contacto", label: "Contacto" },
     { to: "/dashboard", label: "Dashboard" },
+    
 
   ];
 
@@ -67,7 +69,7 @@ export default function Navbar() {
 
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow">
+    <header className="fixed top-0 z-50 w-full bg-transparent backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
 
         {/* LOGO */}
@@ -82,9 +84,9 @@ export default function Navbar() {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `text-sm font-medium transition ${isActive
-                  ? "text-purple-600"
-                  : "text-gray-700 hover:text-purple-500"
+                `px-4 py-2 rounded-md text-sm foont-medium transition-all duration-300 ${isActive
+                  ? "bg-purple-300 text-black"
+                  : "text-white hover:bg-purple-300 hover:text-black"
                 }`
               }
             >
@@ -107,7 +109,7 @@ export default function Navbar() {
           {/* 🛒 CARRITO (SIEMPRE VISIBLE) */}
           <button
             onClick={abrirCarrito}
-            className="relative p-2 rounded-full hover:bg-gray-100"
+            className="relative p-2 rounded-full hover:bg-purple-300/60 transition"
           >
             <ShoppingCart size={22} />
             {totalItems > 0 && (
@@ -142,7 +144,7 @@ export default function Navbar() {
             <button
               onClick={logout}
               className="hidden lg:block text-sm px-4 py-1.5
-                         border rounded-full hover:bg-gray-100 transition"
+border border-white text-white rounded-full hover:bg-purple-300 hover:text-black transition"
             >
               Cerrar sesión
             </button>
@@ -174,13 +176,13 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             onSubmit={handleSearch}
-            className="bg-white border-t px-4 py-3 flex gap-2"
+            className="bg-black/80 backdrop-blur-md border-t border-white/20 px-4 py-3 flex gap-2"
           >
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Buscar productos..."
-              className="flex-1 border rounded px-3 py-2"
+              className="flex-1 rounded px-3 py-2 bg-white/90 text-black"
             />
             <button className="bg-purple-600 text-white px-4 rounded">
               Buscar
@@ -196,7 +198,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="lg:hidden bg-white border-t"
+            className="lg:hidden bg-black/90 backdrop-blur-md border-t border-white/20"
           >
             <div className="flex flex-col p-4 gap-3">
 

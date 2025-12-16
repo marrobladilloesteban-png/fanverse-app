@@ -173,80 +173,22 @@ const MisionVisionPage = () => {
             >
               💬 ¡Deja tu feedback!
             </button>
+            
 
 
           </div>
         </section>
       </main>
-      {openFeedback && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 w-[90%] max-w-md shadow-lg">
+      <FeedbackModal
+  open={openFeedback}
+  onClose={() => {
+    setOpenFeedback(false);
+    setEnviado(false);
+    setRating(0);
+    setOpinion("");
+  }}
+/>
 
-            {!enviado ? (
-              <>
-                <h3 className="text-xl font-bold text-purple-700 mb-3 text-center">
-                  💖 Cuéntanos tu experiencia
-                </h3>
-
-                {/* ⭐ Estrellas */}
-                <div className="flex justify-center mb-4">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <button
-                      key={star}
-                      onClick={() => setRating(star)}
-                      className={`text-3xl ${star <= rating ? "text-pink-400" : "text-gray-300"
-                        }`}
-                    >
-                      ★
-                    </button>
-                  ))}
-                </div>
-
-                {/* ✍️ Opinión */}
-                <textarea
-                  value={opinion}
-                  onChange={(e) => setOpinion(e.target.value)}
-                  placeholder="Escribe tu opinión aquí..."
-                  className="w-full border rounded-md p-2 mb-4"
-                />
-
-                <button
-                  onClick={enviarFeedback}
-                  disabled={loading}
-                  className="w-full bg-purple-500 text-white py-2 rounded-md hover:bg-purple-600 transition"
-                >
-                  {loading ? "Enviando..." : "Enviar feedback"}
-                </button>
-
-              </>
-            ) : (
-              /* 🌸 MENSAJE DE GRACIAS */
-              <div className="text-center">
-                <p className="text-2xl mb-2">💖</p>
-                <h3 className="text-xl font-semibold text-purple-700 mb-2">
-                  ¡Gracias por tu opinión!
-                </h3>
-                <p className="text-gray-700">
-                  Tu opinión nos ayuda a mejorar y a crear una experiencia cada vez más especial para nuestra comunidad K-pop ✨🎶
-                  ¡Seguiremos trabajando con mucho amor para ti!💕
-                </p>
-
-                <button
-                  onClick={() => {
-                    setOpenFeedback(false);
-                    setEnviado(false);
-                    setRating(0);
-                    setOpinion("");
-                  }}
-                  className="mt-4 bg-pink-400 text-white px-4 py-2 rounded-md"
-                >
-                  Cerrar
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
 
     </div>
   );
