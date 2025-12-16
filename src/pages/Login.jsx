@@ -70,7 +70,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-[80dvh] flex flex-col items-center justify-center p-6 px-4 text-center">
+    <div className="min-h-[80dvh] flex flex-col items-center justify-center p-24 px-4 text-center">
 
       {/* HEADER */}
       <div className="mb-8">
