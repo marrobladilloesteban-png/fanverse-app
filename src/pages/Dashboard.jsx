@@ -112,7 +112,7 @@ export default function Dashboard() {
       : cursos.filter((c) => c.grupo === filtroGrupo);
 
   return (
-    <div className="pt-50 min-h-[80vh] -to-b from-slate-50 via-slate-50 to-slate-100">
+    <div className="pt-20 min-h-[80vh] -to-b from-slate-50 via-slate-50 to-slate-100">
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-6">
           <h1 className="text-3xl font-semibold text-slate-900 drop-shadow-lg text-white/90">
