@@ -3,8 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage" : "https://yadira-estanis.github.io/fanverse-app",
-
+  "homepage": "https://Yadira-Estanis.github.io/fanverse-app",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -41,4 +40,3 @@
     "vite": "^7.1.7"
   }
 }
-
